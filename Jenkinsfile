@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+   agent { label 'ecs-anun' }
     stages {
         stage('Welcome Step') {
             steps { 
