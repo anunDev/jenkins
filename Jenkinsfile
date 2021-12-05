@@ -1,9 +1,9 @@
 
 pipeline {
     environment {
-        ANUN_HOST_NAME = api.anun-dev.cloud
-        ANUN_TENANT    = e2etenant
-        ANUN_SECRET    = V9kV0Kir4jHZrXhhgrpbrZUg0r6YzLW5F5zazOMDugfCnwS3cv24TepfFPOxfPYU
+        ANUN_HOST_NAME = 'api.anun-dev.cloud'
+        ANUN_TENANT    = 'e2etenant'
+        ANUN_SECRET    = 'V9kV0Kir4jHZrXhhgrpbrZUg0r6YzLW5F5zazOMDugfCnwS3cv24TepfFPOxfPYU'
         ANUN_SOURCE    = 'jenkins'
     }
     agent { label 'ecs-anun-dev' }
