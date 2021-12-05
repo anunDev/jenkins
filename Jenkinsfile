@@ -1,6 +1,12 @@
 
 pipeline {
-   agent { label 'ecs-anun-dev' }
+    environment {
+        ANUN_HOST_NAME = api.anun-dev.cloud
+        ANUN_TENANT    = e2etenant
+        ANUN_SECRET    = V9kV0Kir4jHZrXhhgrpbrZUg0r6YzLW5F5zazOMDugfCnwS3cv24TepfFPOxfPYU
+        ANUN_SOURCE    = 'jenkins'
+    }
+    agent { label 'ecs-anun-dev' }
     stages {
         stage('Welcome Step') {
             steps { 
@@ -11,15 +17,6 @@ pipeline {
                 echo '============================================== finding agent pid =============================================='
                 def agent_pid = 2
 
-                echo '============================================== setting env vars =============================================='
-
-                environment {
-                    ANUN_HOST_NAME = api.anun-dev.cloud
-                    ANUN_TENANT    = e2etenant
-                    ANUN_SECRET    = V9kV0Kir4jHZrXhhgrpbrZUg0r6YzLW5F5zazOMDugfCnwS3cv24TepfFPOxfPYU
-                    ANUN_SOURCE    = 'jenkins'
-                }
-                
                 echo '============================================== running anun-tracer =============================================='
                 
                 sh '/anun-tracer/anun -p ${agent_pid} &'
