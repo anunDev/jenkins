@@ -14,9 +14,9 @@ pipeline {
                 sh 'ps -aux'
                 sh 'sleep 1'
                 def time = 5
-                echo "Waiting ${SLEEP_TIME_IN_SECONDS} seconds for deployment to complete prior starting smoke testing"
+                echo 'waiting ${SLEEP_TIME_IN_SECONDS} seconds for deployment to complete prior starting smoke testing'
                 sleep time.toInteger()
-                echo $$
+                echo '$$'
                 sh 'ls -al /tmp/'
             }
         }
