@@ -12,14 +12,12 @@ pipeline {
                 chmod a+x /anun-tracer/setup.sh
                 echo '/anun-tracer/setup.sh ...'
                 ps -aux
-                sleep 1
-                sleep 1
+                sh 'sleep 1'
+                def time = 5
+                echo "Waiting ${SLEEP_TIME_IN_SECONDS} seconds for deployment to complete prior starting smoke testing"
+                sleep time.toInteger()
                 echo $$
                 ls -al /tmp/
-                sleep 1
-                sleep 1
-                sleep 1
-                sleep 1
                 cat /tmp/anun.*.log
             }
         }
