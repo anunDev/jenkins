@@ -18,7 +18,6 @@ pipeline {
                 sleep time.toInteger()
                 echo $$
                 ls -al /tmp/
-                cat /tmp/anun.*.log
             }
         }
     }
