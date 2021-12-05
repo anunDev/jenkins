@@ -13,9 +13,8 @@ pipeline {
                 echo '/anun-tracer/setup.sh ...'
                 sh 'ps -aux'
                 sh 'sleep 1'
-                def time = 5
-                echo 'waiting ${time} seconds for deployment to complete prior starting smoke testing'
-                sleep time.toInteger()
+                echo 'waiting 5 seconds for deployment to complete prior starting smoke testing'
+                sh 'sleep 5'
                 echo '$$'
                 sh 'ls -al /tmp/'
             }
