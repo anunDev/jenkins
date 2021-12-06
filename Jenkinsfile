@@ -9,8 +9,6 @@ pipeline {
     agent { label 'ecs-anun-dev' }
     stages {
         stage('Welcome Step') {
-            def agent_pid = "2"
-            
             steps { 
                 echo 'running e2e test!'
                 echo '============================================== downloading & installing anun-tracer =============================================='
@@ -26,8 +24,10 @@ pipeline {
                 sh 'ls'
                 sh 'sleep 1'
                 sh 'sleep 5'
-                echo '$$'
+                sh 'echo $$'
                 sh 'ls -al /tmp/'
+                sh 'ps'
+
             }
         }
     }
