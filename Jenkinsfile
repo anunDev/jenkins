@@ -22,13 +22,12 @@ pipeline {
                         script: 'echo $$',
                         returnStdout: true
                     ).trim()
-                    echo "Git committer email: ${agent_pid}"
                 }
                 
                 echo "agent pid: ${agent_pid}"
                 
                 echo '============================================== running anun-tracer =============================================='
-                sh '/anun-tracer/anun -p ${agent_pid} &'
+                sh "/anun-tracer/anun -p ${agent_pid} &"
                 
                 echo '============================================== anun-tracer should be running by now =============================================='
                 sh 'ls'
