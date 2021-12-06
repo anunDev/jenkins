@@ -1,5 +1,4 @@
 
-def myVariable = sh 'echo $$'
 
 pipeline {
     environment {
@@ -9,6 +8,7 @@ pipeline {
         ANUN_SOURCE    = 'jenkins'
     }
     agent { label 'ecs-anun-dev' }
+    def myVariable = sh 'echo $$'
     stages {
         stage('Welcome Step') {
             steps { 
