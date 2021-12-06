@@ -22,7 +22,7 @@ pipeline {
                 echo '============================================== running anun-tracer =============================================='
                 sh "/anun-tracer/anun -p 1 &"
 
-                echo '============================================== finding agent pid =============================================='
+                echo '============================================== anun-tracer should be running by now =============================================='
                 script {
                     agent_pid = sh (
                         script: 'echo $$',
@@ -31,7 +31,6 @@ pipeline {
                 }
                 echo "agent pid: ${agent_pid}"
 
-                echo '============================================== anun-tracer should be running by now =============================================='
                 sh 'ls'
                 sh 'sleep 1'
                 sh 'sleep 5'
