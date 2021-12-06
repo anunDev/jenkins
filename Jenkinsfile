@@ -1,5 +1,3 @@
-
-
 pipeline {
     environment {
         ANUN_HOST_NAME = 'api.anun-dev.cloud'
@@ -9,20 +7,11 @@ pipeline {
     }
     agent { label 'ecs-anun-dev' }
     stages {
-     stage("Fix the permission issue") {
-
-            agent any
-
-            steps {
-                sh "sudo chown root:jenkins /run/docker.sock"
-            }
-
-        }
         stage('Welcome Step') {
-            steps { 
+            steps {
                 sh 'echo $$'
                 echo 'running e2e test!'
-                
+
                 echo '============================================== downloading & installing anun-tracer =============================================='
                  script {
                     sh (
@@ -37,12 +26,12 @@ pipeline {
                         returnStdout: true
                     ).trim()
                 }
-                
+
                 echo "agent pid: ${agent_pid}"
-                
+
                 echo '============================================== running anun-tracer =============================================='
                 sh "/anun-tracer/anun -p ${agent_pid} &"
-                
+
                 echo '============================================== anun-tracer should be running by now =============================================='
                 sh 'ls'
                 sh 'sleep 1'
