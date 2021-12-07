@@ -6,7 +6,7 @@ pipeline {
         ANUN_SOURCE    = 'jenkins'
     }
 
-    agent { label 'ecs-anun-staging' }
+    agent { label 'ecs-anun' }
 
     stages {
         stage('Welcome Step') {
