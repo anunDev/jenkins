@@ -33,13 +33,10 @@ pipeline {
 
                 sh 'ls'
                 sh 'sleep 1'
-                sh 'sleep 5'
                 sh 'echo $$'
                 sh 'ls -al /tmp/'
-                sh 'sleep 5'
                 sh 'ls'
                 sh 'ls -l'
-                sh 'sleep 5'
                 sh 'cat /tmp/anun.*.log'
             }
         }
