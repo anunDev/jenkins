@@ -7,9 +7,8 @@ pipeline {
     }
 
     agent { label 'ecs-anun-dev' }
-
     stages {
-        stage('Install ANUN') {
+        stage ('Prepare job params') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "jenkins-anun-e2e-secret", passwordVariable: 'ANUN_SECRET', usernameVariable: 'ANUN_TENANT')]) {
                     echo '============================================== downloading & installing anun-tracer =============================================='
@@ -21,31 +20,31 @@ pipeline {
                 }
             }
         }
-    }
 
-    stage("stage #2") {
-        steps {
-            sh 'echo $$'
-            echo 'running e2e test!'
-            sh 'whoami'
+        stage ('Stage 2') {
+             steps {
+                sh 'echo $$'
+                echo 'running e2e test!'
+                sh 'whoami'
 
 
-            echo '============================================== anun-tracer should be running by now =============================================='
-            script {
-                agent_pid = sh (
-                    script: 'echo $$',
-                    returnStdout: true
-                ).trim()
+                echo '============================================== anun-tracer should be running by now =============================================='
+                script {
+                    agent_pid = sh (
+                        script: 'echo $$',
+                        returnStdout: true
+                    ).trim()
+                }
+                echo "agent pid: ${agent_pid}"
+
+                sh 'ls'
+                sh 'sleep 1'
+                sh 'echo $$'
+                sh 'ls -al /tmp/'
+                sh 'ls'
+                sh 'ls -l'
+                sh 'cat /tmp/anun.*.log'
             }
-            echo "agent pid: ${agent_pid}"
-
-            sh 'ls'
-            sh 'sleep 1'
-            sh 'echo $$'
-            sh 'ls -al /tmp/'
-            sh 'ls'
-            sh 'ls -l'
-            sh 'cat /tmp/anun.*.log'
         }
     }
 }
