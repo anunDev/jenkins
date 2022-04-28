@@ -26,16 +26,17 @@ pipeline {
                         script: 'echo $$',
                         returnStdout: true
                     ).trim()
-                }
-                echo "agent pid: ${agent_pid}"
 
-                sh 'ls'
-                sh 'sleep 1'
-                sh 'echo $$'
-                sh 'ls -al /tmp/'
-                sh 'ls'
-                sh 'ls -l'
-                sh 'cat /tmp/anun.*.log'
+                    echo "agent pid: ${agent_pid}"
+
+                    sh 'ls'
+                    sh 'sleep 1'
+                    sh 'echo $$'
+                    sh 'ls -al /tmp/'
+                    sh 'ls'
+                    sh 'ls -l'
+                    sh 'cat /tmp/anun.*.log'
+                }
             }
         }
     }
