@@ -6,7 +6,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: "anun-staging-e2etenant-webhook-secret", passwordVariable: 'ANUN_SECRET', usernameVariable: 'ANUN_TENANT')]) {
                     sh 'apt-get update && apt-get install -y curl wget'
-                    sh 'curl -s "https://downloads.anun-dev.cloud/tracer/pub/anun-installer.sh" | bash -s "https://downloads.anun-dev.cloud/tracer/anun-tracer.tar.gz?Expires=1669373114&Signature=BqUp8fqf7O0EcFXUvdJvfUFUjg42cy~Yk2cRqC8r9urHZrNJ7D6zJ07YUcCjDvUwkJYwDiXqFKb1JW1RnUi3tlrdlFvwfQYMdwkCsvM51dfke-z9RfnJVPy4qzqC7-lEBjU2gWmJaMGwghXkqpIQsCw0uqKIhErDEtUvsArZW-dpWGDg6hvG1VyncZTcGUf7X3yDvNTKhdEYeXCVvoV2fOSFd8vX~CXklKb6e1uOuAssb5GKxj6SAGl~s9dXwre8TP56SJE00KHXXLvfmfKIU2Zfi1uE5MdWt9IiEsxRIYTLIMM40SXbhzP2ArEgMOILuFjvUoAQ8XqwTLcqJHTW9w__&Key-Pair-Id=K2LJ44JU7P44XR"'
+                    sh 'curl -s "https://downloads.anun-stg.cloud/tracer/pub/anun-installer.sh" | bash -s "https://downloads.anun-stg.cloud/tracer/anun-tracer.tar.gz?Expires=1669982554&Signature=1hhPpMnVXGdGv2lVv2PouyyRcnDL0thOlHAQIdkOTTbPoQyk2lg37BbkJzUF2zTzeulLfSl-gctIZwBeDW6ngBAKrTDTKiqRwqpS7xFeZfeyttlJdHwNViFMt5xy903TvZJ86O6b4IQhLoL6szWT0mhh9DCuoSAAGFUwgHm806ZlNXIz92eHdDDmC5071tu6F0B02w5I1~Ebrnys~8HSQ7mJr8zgpHn412lJEsz2jLkXNxOolLrP8kBvJ8XSXo0hru8qpS0Tse7RkKmfsfnoTCW8XWkBGV-v~9nUGoA~3oIl9tMGZSL0kdC9uIpIC~pzxO5S1bMwVQE6zjUTwG6Oyg__&Key-Pair-Id=K19MYNUVGQ3Q3N"'
 
                     sh "/anun-tracer/anun -p 1 &"
                 }
